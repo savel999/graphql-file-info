@@ -2,6 +2,14 @@
 
 package model
 
+type AddListItemInput struct {
+	IDAnyOf []int `json:"idAnyOf"`
+}
+
+type AddListItemResult struct {
+	Item *Item `json:"item"`
+}
+
 type FileData struct {
 	Name string `json:"name"`
 	Size string `json:"size"`
@@ -14,6 +22,19 @@ type FileInfoResult struct {
 
 type FilesInfoResult struct {
 	Files []*FileData `json:"files"`
+}
+
+type Item struct {
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+}
+
+type ListItemsInput struct {
+	IDAnyOf []int `json:"idAnyOf"`
+}
+
+type ListItemsResult struct {
+	Items []*Item `json:"items"`
 }
 
 type UploadFileResult struct {

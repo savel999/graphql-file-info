@@ -26,12 +26,35 @@ type UploadFileResult {
   file: FileData!
 }
 
+type Item {
+  id: Int!
+  name: String!
+}
+
+type ListItemsResult {
+  items: [Item!]!
+}
+
+input ListItemsInput {
+  idAnyOf: [Int!]
+}
+
+input AddListItemInput {
+  idAnyOf: [Int!]
+}
+
+type AddListItemResult {
+  item: Item!
+}
+
 type Query {
   fileInfo(file:Upload!): FileInfoResult!
   filesInfo(files:[Upload!]!): FilesInfoResult!
+  getListItems(input: ListItemsInput): ListItemsResult!
 }
 
 type Mutation {
   uploadFile(file:Upload!): UploadFileResult!
   uploadFiles(files:[Upload!]!): UploadFilesResult!
+  addListItem(name: String!): AddListItemResult!
 }
